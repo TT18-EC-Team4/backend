@@ -2,15 +2,21 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
+const morgan = require('morgan')
 const fileUpload = require('express-fileupload')
 const cookieParser = require('cookie-parser')
 const path = require('path')
 
 
 const app = express()
+
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors())
+app.use(morgan('tiny'))
+app.use(cors({
+    origin: ["http://localhost:3000"],
+    method: ["GET", "POST"]
+}))
 app.use(fileUpload({
     useTempFiles: true
 }))
@@ -32,7 +38,7 @@ mongoose.connect(URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, err =>{
-    if(err) throw err;
+    if (err) throw err;
     console.log('Connected to MongoDB')
 })
 
