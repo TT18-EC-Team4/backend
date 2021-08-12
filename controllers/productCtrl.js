@@ -26,7 +26,7 @@ class APIfeatures {
     }
 
     sorting(){
-        if(this.queryString.sort){
+        if (this.queryString.sort){
             const sortBy = this.queryString.sort.split(',').join(' ')
             this.query = this.query.sort(sortBy)
         }else{
@@ -65,15 +65,15 @@ const productCtrl = {
     },
     createProduct: async(req, res) =>{
         try {
-            const {product_id, title, price, description, content, images, category} = req.body;
-            if(!images) return res.status(400).json({msg: "No image upload"})
+            const {id, name, cost, author, publishedYear, picture, category, quantity, onDiscount, numOfReviews, ratePoint} = req.body;
+            if (!picture) return res.status(400).json({msg: "No image upload"})
 
-            const product = await Products.findOne({product_id})
-            if(product)
+            const product = await Products.findOne({id})
+            if (product)
                 return res.status(400).json({msg: "This product already exists."})
 
             const newProduct = new Products({
-                product_id, title: title.toLowerCase(), price, description, content, images, category
+                id, name: name.toLowerCase(), cost, author, publishedYear, picture, category, quantity, onDiscount, numOfReviews, ratePoint
             })
 
             await newProduct.save()
@@ -93,11 +93,11 @@ const productCtrl = {
     },
     updateProduct: async(req, res) =>{
         try {
-            const {title, price, description, content, images, category} = req.body;
-            if(!images) return res.status(400).json({msg: "No image upload"})
+            const {name, cost, author, publishedYear, picture, category, quantity, onDiscount, numOfReviews, ratePoint} = req.body;
+            if (!picture) return res.status(400).json({msg: "No image upload"})
 
             await Products.findOneAndUpdate({_id: req.params.id}, {
-                title: title.toLowerCase(), price, description, content, images, category
+                name: name.toLowerCase(), cost, author, publishedYear, picture, category, quantity, onDiscount, numOfReviews, ratePoint
             })
 
             res.json({msg: "Updated a Product"})

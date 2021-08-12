@@ -2,43 +2,51 @@ const mongoose = require('mongoose')
 
 
 const productSchema = new mongoose.Schema({
-    product_id:{
+    id:{
         type: String,
         unique: true,
         trim: true,
         required: true
     },
-    title:{
+    name:{
         type: String,
         trim: true,
         required: true
     },
-    price:{
+    cost:{
         type: Number,
         trim: true,
         required: true
     },
-    description:{
+    author:{
         type: String,
         required: true
     },
-    content:{
-        type: String,
+    publishedYear:{
+        type: Number,
         required: true
     },
-    images:{
+    picture:{
         type: Object,
         required: true
     },
-    category:{
-        type: String,
+    category: {
+        type: Array,
         required: true
     },
-    checked:{
+    onDiscount: {
         type: Boolean,
         default: false
     },
-    stock:{
+    quantity: {
+        type: Number,
+        default: 0
+    },
+    numOfReviews: {
+        type: Number,
+        default: 0
+    },
+    ratePoint: {
         type: Number,
         default: 0
     }

@@ -15,7 +15,7 @@ const paymentCtrl = {
     createPayment: async(req, res) => {
         try {
             const user = await Users.findById(req.user.id).select('name email')
-            if(!user) return res.status(400).json({msg: "User does not exist."})
+            if (!user) return res.status(400).json({msg: "User does not exist."})
 
             const {cart, paymentID, address} = req.body;
 
