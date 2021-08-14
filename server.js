@@ -28,6 +28,7 @@ app.use(
 app.use("/user", require("./routes/user/userRouter"));
 app.use("/user", require("./routes/user/categoryRouter"));
 app.use("/user", require("./routes/user/productRouter"));
+app.use("/user", require("./routes/user/orderRouter"));
 // app.use("/user", require("./routes/user/upload"));
 // app.use('/user', require('./routes/paymentRouter'))
 
@@ -35,6 +36,7 @@ app.use("/admin", require("./routes/admin/userRouter"));
 app.use("/admin", require("./routes/admin/categoryRouter"));
 app.use("/admin", require("./routes/admin/upload"));
 app.use("/admin", require("./routes/admin/productRouter"));
+app.use("/admin", require("./routes/admin/orderRouter"));
 
 // Connect to mongodb
 const URI = process.env.MONGODB_URL;

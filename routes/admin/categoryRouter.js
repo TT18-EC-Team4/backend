@@ -17,20 +17,3 @@ router
   .put(categoryCtrl.updateCategory);
 
 module.exports = router;
-
-// [
-//     {
-//         "_id": "611524b2b8eec2676fe54e2f",
-//         "name": "Fiction",
-//         "createdAt": "2021-08-12T13:40:02.074Z",
-//         "updatedAt": "2021-08-12T13:40:02.074Z",
-//         "__v": 0
-//     },
-//     {
-//         "_id": "6116549731bbdf144c9dc1d5",
-//         "name": "Romantic",
-//         "createdAt": "2021-08-13T11:16:39.612Z",
-//         "updatedAt": "2021-08-13T11:16:39.612Z",
-//         "__v": 0
-//     }
-// ]
