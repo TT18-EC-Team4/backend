@@ -31,34 +31,22 @@ const orderCtrl = {
 
   createOrder: async (req, res) => {
     try {
-      const { id, userId, orders, total, orderDate, status } = req.body;
-      if (!picture) return res.status(400).json({ msg: "No image upload" });
+      const { userId, orders, total, orderDate, status } = req.body;
 
-      const product = await Products.findOne({
-        name: name.toLowerCase(),
-        author: author,
-        publishedYear: publishedYear,
-        cost: cost,
-      });
-      if (product)
-        return res.status(400).json({ msg: "This product already exists." });
-
-      const newProduct = new Products({
+      const order = await Orders.find({});
+      const length = order.length;
+      const id = "need code here";
+      const newOrder = new Orders({
         id,
-        name: name.toLowerCase(),
-        cost,
-        author,
-        publishedYear,
-        picture,
-        category,
-        quantity,
-        onDiscount,
-        numOfReviews,
-        ratePoint,
+        userId,
+        orders,
+        total,
+        orderDate,
+        status,
       });
 
-      await newProduct.save();
-      res.json({ msg: "Created a product" });
+      await newOrder.save();
+      res.json({ msg: "Created a order", id: id });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
