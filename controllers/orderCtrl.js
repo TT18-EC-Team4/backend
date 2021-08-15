@@ -16,7 +16,8 @@ const orderCtrl = {
   },
   getOrdersUser: async (req, res) => {
     try {
-      const user = req.body;
+      console.log(req.body.userID);
+      const user = req.body.userID;
       const orders = await Orders.find({ userId: user });
 
       res.json({
@@ -37,7 +38,6 @@ const orderCtrl = {
       const length = order.length;
       const id = "need code here";
       const newOrder = new Orders({
-        id,
         userId,
         orders,
         total,
