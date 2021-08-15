@@ -7,7 +7,7 @@ router
   .route("/orders")
   //   .get(auth, orderCtrl.getOrdersUser)
   // .post(auth, orderCtrl.createOrder);
-  .get(orderCtrl.getOrdersUser)
+  .post(orderCtrl.getOrdersUser)
   .post(orderCtrl.createOrder);
 
 router

@@ -63,7 +63,7 @@ const userCtrl = {
       //   maxAge: 7 * 24 * 60 * 60,
       // });
 
-      res.json({ accesstoken });
+      res.json({ accesstoken: accesstoken, userid: user._id });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

@@ -53,7 +53,6 @@ const productCtrl = {
     try {
       const length = await Products.find({});
       const temp = length.length;
-      console.log(temp);
       const { page, limit } = req.body;
       const features = new APIfeatures(Products.find({}), req.body)
         // .filtering()
