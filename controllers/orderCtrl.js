@@ -52,7 +52,7 @@ const orderCtrl = {
     }
   },
 
-  updateProduct: async (req, res) => {
+  updateOrder: async (req, res) => {
     try {
       const status = req.body;
       await Orders.findOneAndUpdate(
@@ -67,7 +67,7 @@ const orderCtrl = {
     }
   },
 
-  cancelProduct: async (req, res) => {
+  cancelOrder: async (req, res) => {
     try {
       await Orders.findOneAndUpdate(
         { _id: req.params.id },
