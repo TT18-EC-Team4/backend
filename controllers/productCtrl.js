@@ -51,7 +51,10 @@ class APIfeatures {
 const productCtrl = {
   getProducts: async (req, res) => {
     try {
-      console.log(req.body);
+      const length = await Products.find({});
+      const temp = length.length;
+      console.log(temp);
+      const { page, limit } = req.body;
       const features = new APIfeatures(Products.find({}), req.body)
         // .filtering()
         // .sorting()
@@ -61,9 +64,12 @@ const productCtrl = {
       // const products = await Products.find({});
 
       res.json({
-        status: "success",
-        result: products.length,
+        // status: "success",
+        // result: products.length,
         products: products,
+        page: page,
+        limit: limit,
+        totalRows: temp,
       });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
