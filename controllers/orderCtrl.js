@@ -1,4 +1,5 @@
 const Orders = require("../models/orderModel");
+const Products = require("../models/productModel");
 
 const orderCtrl = {
   getOrdersAdmin: async (req, res) => {
@@ -18,7 +19,17 @@ const orderCtrl = {
     try {
       console.log(req.body.userID);
       const user = req.body.userID;
-      const orders = await Orders.find({ userId: user });
+      let orders = await Orders.find({ userId: user });
+      for (let i in orders) {
+        let listName = [];
+        const order = orders[i];
+        for (let j in order.cart) {
+          const item = order.cart[j];
+          const ptr = await Products.findOne({ id: item });
+          listName.push(ptr.name);
+        }
+        order.cart = listName;
+      }
 
       res.json({
         status: "success",
@@ -69,13 +80,14 @@ const orderCtrl = {
 
   cancelOrder: async (req, res) => {
     try {
-      await Orders.findOneAndUpdate(
+      const order = await Orders.findOneAndUpdate(
         { _id: req.params.id },
         {
-          status: "cancel",
+          status: "Cancel",
         }
       );
-      res.json({ msg: "Cancel your Order" });
+      console.log(order);
+      res.json({ msg: "Cancel your Order", newStatus: "Cancel" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
