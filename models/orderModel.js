@@ -13,7 +13,7 @@ const orderSchema = new mongoose.Schema(
       trim: true,
       required: true,
     },
-    orders: {
+    cart: {
       type: Array,
       required: true,
     },
