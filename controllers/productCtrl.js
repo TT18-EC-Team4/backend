@@ -123,7 +123,7 @@ const productCtrl = {
   deleteProduct: async (req, res) => {
     console.log(req.params.id);
     try {
-      await Products.findByIdAndDelete(req.params.id);
+      await Products.findOneAndDelete({ id: req.params.id });
       res.json({ msg: "Deleted a Product" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
@@ -131,6 +131,7 @@ const productCtrl = {
   },
   updateProduct: async (req, res) => {
     try {
+      console.log(req.body);
       const {
         name,
         cost,
@@ -146,7 +147,7 @@ const productCtrl = {
       if (!picture) return res.status(400).json({ msg: "No image upload" });
 
       await Products.findOneAndUpdate(
-        { _id: req.params.id },
+        { id: req.params.id },
         {
           name: name.toLowerCase(),
           cost,
