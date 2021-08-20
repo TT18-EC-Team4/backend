@@ -76,6 +76,7 @@ const productCtrl = {
   },
   createProduct: async (req, res) => {
     try {
+      console.log(req.body);
       const {
         id,
         name,
@@ -85,9 +86,6 @@ const productCtrl = {
         picture,
         category,
         quantity,
-        onDiscount,
-        numOfReviews,
-        ratePoint,
       } = req.body;
       if (!picture) return res.status(400).json({ msg: "No image upload" });
 
@@ -109,9 +107,6 @@ const productCtrl = {
         picture,
         category,
         quantity,
-        onDiscount,
-        numOfReviews,
-        ratePoint,
       });
 
       await newProduct.save();

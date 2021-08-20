@@ -12,8 +12,6 @@ router
 router
   .route("/category/:id")
   // .delete(auth, authAdmin, categoryCtrl.deleteCategory)
-  // .put(auth, authAdmin, categoryCtrl.updateCategory);
-  .delete(categoryCtrl.deleteCategory)
-  .put(categoryCtrl.updateCategory);
+  .delete(categoryCtrl.deleteCategory);
 
 module.exports = router;
