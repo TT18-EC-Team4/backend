@@ -13,6 +13,18 @@ const orderSchema = new mongoose.Schema(
       trim: true,
       required: true,
     },
+    receiverName: {
+      type: String,
+      required: true,
+    },
+    receiverPhone: {
+      type: String,
+      required: true,
+    },
+    receiverAddress: {
+      type: String,
+      required: true,
+    },
     cart: {
       type: Array,
       required: true,

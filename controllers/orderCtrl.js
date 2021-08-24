@@ -43,14 +43,26 @@ const orderCtrl = {
 
   createOrder: async (req, res) => {
     try {
-      const { userId, orders, total, orderDate, status } = req.body;
+      const {
+        userId,
+        receiverName,
+        receiverPhone,
+        receiverAddress,
+        cart,
+        total,
+        orderDate,
+        status,
+      } = req.body;
 
-      const order = await Orders.find({});
-      const length = order.length;
+      // const order = await Orders.find({});
+      // const length = order.length;
       const id = "need code here";
       const newOrder = new Orders({
         userId,
-        orders,
+        receiverName,
+        receiverPhone,
+        receiverAddress,
+        cart,
         total,
         orderDate,
         status,

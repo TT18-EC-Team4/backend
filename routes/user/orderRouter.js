@@ -5,9 +5,12 @@ const authAdmin = require("../../middleware/authAdmin");
 
 router
   .route("/orders")
-  //   .get(auth, orderCtrl.getOrdersUser)
   // .post(auth, orderCtrl.createOrder);
-  .post(orderCtrl.getOrdersUser)
+  .post(orderCtrl.getOrdersUser);
+
+router
+  .route("/orders/checkout")
+  // .post(auth, orderCtrl.createOrder);
   .post(orderCtrl.createOrder);
 
 router
