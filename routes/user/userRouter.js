@@ -2,9 +2,9 @@ const router = require("express").Router();
 const userCtrl = require("../../controllers/userCtrl");
 const auth = require("../../middleware/auth");
 
-router.post("/register", userCtrl.register);
+router.post("/register", userCtrl.userRegister);
 
-router.post("/login", userCtrl.login);
+router.post("/login", userCtrl.userLogin);
 
 router.get("/logout", userCtrl.logout);
 
