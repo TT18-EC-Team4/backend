@@ -4,19 +4,11 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const userCtrl = {
-<<<<<<< HEAD
-  register: async (req, res) => {
-    try {
-      const { name, email, password } = req.body;
-
-      const user = await Users.findOne({ email });
-=======
   userRegister: async (req, res) => {
     try {
       const { name, email, password } = req.body;
 
       const user = await Users.findOne({ email, role: 0 });
->>>>>>> a2ef171fa242573b275566eb83866a6b71c8b99d
       if (user)
         return res.status(400).json({ msg: "The email already exists." });
 
@@ -31,10 +23,7 @@ const userCtrl = {
         name,
         email,
         password: passwordHash,
-<<<<<<< HEAD
-=======
         role: 0,
->>>>>>> a2ef171fa242573b275566eb83866a6b71c8b99d
       });
 
       // Save mongodb
@@ -55,13 +44,6 @@ const userCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
-<<<<<<< HEAD
-  login: async (req, res) => {
-    try {
-      const { email, password } = req.body;
-      console.log({ email, password });
-      const user = await Users.findOne({ email });
-=======
   userLogin: async (req, res) => {
     try {
       const { email, password } = req.body;
@@ -132,7 +114,6 @@ const userCtrl = {
       const { email, password } = req.body;
       console.log({ email, password });
       const user = await Users.findOne({ email, role: 1 });
->>>>>>> a2ef171fa242573b275566eb83866a6b71c8b99d
       if (!user) return res.status(400).json({ msg: "User does not exist." });
 
       const isMatch = await bcrypt.compare(password, user.password);
