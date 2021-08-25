@@ -13,7 +13,6 @@ const orderSchema = new mongoose.Schema(
       trim: true,
       required: true,
     },
-<<<<<<< HEAD
     receiverName: {
       type: String,
       required: true,
@@ -26,8 +25,6 @@ const orderSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-=======
->>>>>>> a2ef171fa242573b275566eb83866a6b71c8b99d
     cart: {
       type: Array,
       required: true,
